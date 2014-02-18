@@ -1,0 +1,15 @@
+---
+# Enables replication between two OpenDJ instances
+# Assume the "master" instance is on localhost
+# 
+
+- name: Enable DJ replication 
+  command: '{{dsreplication}} enable --host1 {{opendj_host}} --port1 {{opendj_admin_port}}
+      --bindDN1 "cn=directory manager" 
+      --bindPassword1 {{opendj_password}} 
+      --replicationPort1 {{opendj_replication_port}}
+      --host2 {{opendj_host2}} --port2 {{opendj_admin_port2}} --bindDN2 "cn=directory manager" 
+      --bindPassword2 {{opendj_password2}} --replicationPort2 {{opendj_replication_port2}} 
+      --adminUID {{opendj_replication_admin}} --adminPassword {{opendj_replication_password}} 
+      --baseDN "{{opendj_basedn}}" -X -n'
+  
